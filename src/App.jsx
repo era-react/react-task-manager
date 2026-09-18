@@ -11,7 +11,7 @@ function App() {
 
     const newTask = {
       id: Date.now(),
-      text: task,
+      text: task.trim(),
       completed: false,
     };
 
@@ -41,7 +41,11 @@ function App() {
       <p className="subtitle">Keep track of your daily tasks</p>
 
       <div className="input-section">
+        <label htmlFor="task-input" className="sr-only">
+          New task
+        </label>
         <input
+          id="task-input"
           type="text"
           placeholder="Enter a task..."
           value={task}
@@ -82,6 +86,7 @@ function App() {
               <button
                 className="delete-button"
                 onClick={() => deleteTask(item.id)}
+                aria-label={`Delete "${item.text}"`}
               >
                 Delete
               </button>
